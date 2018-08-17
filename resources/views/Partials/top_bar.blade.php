@@ -7,14 +7,29 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
+
+                    @if(session('user'))
+
+                    <li><a href="#">Hello {{session('user')->name}}</a>
+                    </li>
+                    <li><a href="/log-out">Log out</a>
+                    </li>
+                    <li><a href="contact">Contact</a>
+                    </li>
+                    <li><a href="product">Recently viewed</a>
+                    </li>
+
+
+                    @else
                     <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                     </li>
                     <li><a href="register">Register</a>
                     </li>
                     <li><a href="contact">Contact</a>
                     </li>
-                    <li><a href="#">Recently viewed</a>
+                    <li><a href="product">Recently viewed</a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -41,10 +56,10 @@
                             @endif
 
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                                <input type="text" class="form-control" id="email-modal" name="email" placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password-modal" placeholder="password">
+                                <input type="password" class="form-control" id="password-modal" name="password" placeholder="password">
                             </div>
 
                             <p class="text-center">

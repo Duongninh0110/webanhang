@@ -23,8 +23,22 @@ Route::get('/register', 'UserController@create');
 Route::post('customer-registed', 'UserController@store');
 
 
-Route::post('customer-loggedin', 'UserController@postlogin')->middleware('login');
+Route::post('customer-loggedin', 'UserController@postlogin') ->middleware('login');
 
 Route::get('log-out', 'UserController@logout' );
+
+Route::get('category', function () {
+
+	return view ('categories.index');
+
+
+});
+
+Route::get('product', function () {
+
+	return view ('products.show');
+
+
+});
 
 

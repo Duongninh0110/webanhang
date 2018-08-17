@@ -115,28 +115,39 @@ class UserController extends Controller
         'password' => 'required',
         ]);
 
+        // dd($validatedData);
+
         $email=$request->input('email');
         $password=$request->input('password');
         $user=User::where('email', $email)
         ->where('password', $password)
         ->first();
-        if(!empty($user)) {
+
+        // dd($user);
+        
+        if($user) { 
+
             $user = json_decode($user);
             $request->session()->put ('user', $user);
 
         }else{
-            return redirect('/');
+            return redirect('/register');
             Session::flash('sucess', 'Email or Password is incorrect');
 
         }
+
+        // dd(session('user'));
+
+
+       
         return redirect("/");
 
         
     }
 
-    // public function logout (Request $request)
-    // {
-    //     $request->session()->forget('user');
-    //     return view('/');
-    // }
+    public function logout (Request $request)
+    {
+        $request->session()->forget('user');
+        return view('contact');
+    }
 }
