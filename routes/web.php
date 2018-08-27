@@ -27,18 +27,8 @@ Route::post('customer-loggedin', 'UserController@postlogin') ->middleware('login
 
 Route::get('log-out', 'UserController@logout' );
 
-Route::get('category', function () {
+Route::get('category', 'CategoryController@index');
 
-	return view ('categories.index');
-
-
-});
-
-Route::get('product', function () {
-
-	return view ('products.show');
-
-
-});
+Route::get('product/{id}', 'ProductController@show');
 
 

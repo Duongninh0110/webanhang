@@ -15,7 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // $categories =Category::All();
+
+
+        // return view('Categories/index')->with('categories', $categories);
     }
 
     /**
