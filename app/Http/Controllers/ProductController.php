@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('Products.create');
     }
 
     /**
@@ -36,7 +36,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product=new Product;
+        $product->name=$request->name;
+        $product->category_id=$request->category_id;
+        $product->subcategory_id=$request->subcategory_id;
+        $product->productdetail=$request->productdetail;
+        $product->materialandcare=$request->materialandcare;
+        $product->sizeandfit=$request->sizeandfit;
+        $product->styledescribe=$request->styledescribe;
+        $product->price=$request->price;
+
+        if( $fileone= $request->file('image_one')){
+
+         $filenameone=$fileone->getClientOriginalName();
+         $fileone->move('img', $filenameone);
+          $product->image_one=$filenameone;  
+        }
+
+        if( $filetwo = $request->file('image_two')){
+
+         $filenametwo=$filetwo->getClientOriginalName();
+         $filetwo->move('img', $filenametwo);
+          $product->image_two=$filenametwo;  
+        }
+
+         if( $filethree = $request->file('image_three')){
+
+         $filenamethree=$filethree->getClientOriginalName();
+         $filethree->move('img', $filenamethree);
+          $product->image_three=$filenamethree;  
+        }
+        
+        
+
+        $product->save();
     }
 
     /**
@@ -62,7 +95,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+
+        return view('Products.edit')->with('product', $product);
     }
 
     /**
@@ -74,7 +109,39 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->name=$request->name;
+        $product->category_id=$request->category_id;
+        $product->subcategory_id=$request->subcategory_id;
+        $product->productdetail=$request->productdetail;
+        $product->materialandcare=$request->materialandcare;
+        $product->sizeandfit=$request->sizeandfit;
+        $product->styledescribe=$request->styledescribe;
+        $product->price=$request->price;
+
+        if( $fileone= $request->file('image_one')){
+
+         $filenameone=$fileone->getClientOriginalName();
+         $fileone->move('img', $filenameone);
+          $product->image_one=$filenameone;  
+        }
+
+        if( $filetwo = $request->file('image_two')){
+
+         $filenametwo=$filetwo->getClientOriginalName();
+         $filetwo->move('img', $filenametwo);
+          $product->image_two=$filenametwo;  
+        }
+
+         if( $filethree = $request->file('image_three')){
+
+         $filenamethree=$filethree->getClientOriginalName();
+         $filethree->move('img', $filenamethree);
+          $product->image_three=$filenamethree;  
+        }
+        
+
+        $product->save();
     }
 
     /**
@@ -85,6 +152,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
     }
 }

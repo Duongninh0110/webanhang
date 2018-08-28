@@ -110,7 +110,7 @@
 
                     <div class="banner">
                         <a href="#">
-                            <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
+                            <img src="{{url('img/banner.jpg')}}" alt="sales 2014" class="img-responsive">
                         </a>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="row" id="productMain">
                         <div class="col-sm-6">
                             <div id="mainImage">
-                                <img src="img/detailbig1.jpg" alt="" class="img-responsive">
+                                <img src="{{asset('img/'.$product->image_one)}}" alt="" class="img-responsive">
                             </div>
 
                             <div class="ribbon sale">
@@ -141,7 +141,7 @@
                                 <h1 class="text-center">{{$product->name}}</h1>
                                 <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
                                 </p>
-                                <p class="price">{{$product->price}}</p>
+                                <p class="price">${{$product->price}}</p>
 
                                 <p class="text-center buttons">
                                     <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a> 
@@ -153,18 +153,18 @@
 
                             <div class="row" id="thumbs">
                                 <div class="col-xs-4">
-                                    <a href="img/detailbig1.jpg" class="thumb">
-                                        <img src="img/detailsquare.jpg" alt="" class="img-responsive">
+                                    <a href="{{url('img/$product->image_one')}}" class="thumb">
+                                        <img src="{{asset('img/'.$product->image_two)}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="img/detailbig2.jpg" class="thumb">
-                                        <img src="img/detailsquare2.jpg" alt="" class="img-responsive">
+                                    <a href="{{url('img/detailbig2.jpg')}}" class="thumb">
+                                        <img src="{{asset('img/'.$product->image_three)}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                                 <div class="col-xs-4">
-                                    <a href="img/detailbig3.jpg" class="thumb">
-                                        <img src="img/detailsquare3.jpg" alt="" class="img-responsive">
+                                    <a href="{{url('img/detailbig3.jpg')}}" class="thumb">
+                                        <img src="{{url('img/detailsquare3.jpg')}}" alt="" class="img-responsive">
                                     </a>
                                 </div>
                             </div>
@@ -176,20 +176,18 @@
                     <div class="box" id="details">
                         <p>
                             <h4>Product details</h4>
-                            <p>{{$product->description}}</p>
+                            <p>{{$product->productdetail}}</p>
                             <h4>Material & care</h4>
                             <ul>
-                                <li>Polyester</li>
-                                <li>Machine wash</li>
+                                <p>{{$product->materialandcare}}</p>
                             </ul>
                             <h4>Size & Fit</h4>
                             <ul>
-                                <li>Regular fit</li>
-                                <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+                                <p>{{$product->sizeandfit}}</p>
                             </ul>
 
                             <blockquote>
-                                <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
+                                <p><em>{{$product->styledescribe}}</em>
                                 </p>
                             </blockquote>
 
@@ -218,18 +216,18 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="detail.html">
-                                                <img src="img/product2.jpg" alt="" class="img-responsive">
+                                                <img src="{{url('img/product2.jpg')}}" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
                                             <a href="detail.html">
-                                                <img src="img/product2_2.jpg" alt="" class="img-responsive">
+                                                <img src="{{url('img/product2_2.jpg')}}" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="detail.html" class="invisible">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive">
+                                    <img src="{{url('img/product2.jpg')}}" alt="" class="img-responsive">
                                 </a>
                                 <div class="text">
                                     <h3>Fur coat</h3>
@@ -245,7 +243,7 @@
                                     <div class="flipper">
                                         <div class="front">
                                             <a href="detail.html">
-                                                <img src="img/product1.jpg" alt="" class="img-responsive">
+                                                <img src="{{url('img/product1.jpg')}}" alt="" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="back">
